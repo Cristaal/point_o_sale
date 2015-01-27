@@ -1,3 +1,4 @@
+ENV['RACK-ENV'] = 'test'
 require("rspec")
 require("pg")
 require("sinatra/activerecord")
@@ -12,6 +13,6 @@ RSpec.configure do |config|
     end
     Purchase.all().each() do |purchase|
       purchase.destroy()
-    end  
+    end
   end
 end

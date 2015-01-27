@@ -3,16 +3,18 @@
 <h3>First, create a new product for your store!</h3>
 
 <form action="/product" method="post">
-  <label for="name">Product Name</label>
+  <label for="name">Name</label>
   <input id="name" name="name" type="text">
 
-  <label for="price">Product Price</label>
+  <label for="price">Price</label>
   <input id="price" name="price" type="float">
 
   <button type="submit" class="btn btn-primary">Make Product!</button>
 </form>
 
 <ul><% @products.each() do |product| %>
-    <li><a href="/product/ <%= product.id() %>"> <%= product.name() %> <%= product.price() %> </a></li>
+    <li><a href="/product/ <%= product.id() %>"><button type="submit">Edit</button></a> <%= product.name() %> $<%= product.price() %></li>
     <% end %>
 </ul>
+
+<a href="/product_list">Customer Orders</a>

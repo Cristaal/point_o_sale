@@ -1,4 +1,5 @@
 <h1>Check out that <%= @product.name() %></h1>
+<h2>Price $<%= @product.price() %> </h2>
 
 <form action="/products/<%= @product.id() %>" method="post">
   <input name="_method" type="hidden" value="patch">
@@ -6,7 +7,19 @@
   <label for="description">Add a description:</label>
   <input id="description" name="description" type="text">
 
-  <button type="submit">Update</button>
+
+  <label for="price">Update the price:</label>
+  <input id ="price" name="price" type="float">
+
+  <button type="submit">Update <%= @product.name() %></button>
+</form>
+<br>
+<form action="/products/<%= @product.id() %>" method="post">
+  <input name="_method" type="hidden" value="delete">
+
+  <button type="submit">Delete</button>
 </form>
 
 <p><%= @product.description() %></p>
+
+<a href="/">Back to Point-o'-Sale</a>

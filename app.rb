@@ -27,7 +27,19 @@ end
 
 patch("/products/:id") do
   description = params.fetch("description")
+  price = params.fetch("price")
   @product = Product.find(params.fetch("id"))
-  @product.update({ :description => description })
+  @product.update({ :price => price, :description => description })
   erb(:product)
+end
+
+delete("/products/:id") do
+  @product = Product.find(params.fetch("id"))
+  @product.delete()
+  @products = Product.all()
+  erb(:index)
+end
+
+get("/product_list") do
+  erb(:product_list)
 end
