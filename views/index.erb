@@ -1,0 +1,18 @@
+<h1>Here is your Point-o'-Sale</h1>
+
+<h3>First, create a new product for your store!</h3>
+
+<form action="/product" method="post">
+  <label for="name">Product Name</label>
+  <input id="name" name="name" type="text">
+
+  <label for="price">Product Price</label>
+  <input id="price" name="price" type="float">
+
+  <button type="submit" class="btn btn-primary">Make Product!</button>
+</form>
+
+<ul><% @products.each() do |product| %>
+    <li><a href="/product/ <%= product.id() %>"> <%= product.name() %> <%= product.price() %> </a></li>
+    <% end %>
+</ul>
