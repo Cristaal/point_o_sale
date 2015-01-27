@@ -40,6 +40,18 @@ delete("/products/:id") do
   erb(:index)
 end
 
-get("/product_list") do
-  erb(:product_list)
+get("/purchase/:id") do
+  @purchase = Purchase.create({ :name => "Your Order" })
+  @products = Product.all()
+  erb(:purchases)
+end
+
+patch("/purchase/:id") do
+  purchase_id = params.fetch("id")
+  @purchase = Purchase.find(purchase_id)
+  product_ids = params.fetch("product_ids")
+  @purchase.update({:product_ids => product_ids})
+  @products = Product.all()
+  binding.pry
+  erb(:purchases)
 end
