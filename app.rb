@@ -52,6 +52,5 @@ patch("/purchase/:id") do
   product_ids = params.fetch("product_ids")
   @purchase.update({:product_ids => product_ids})
   @products = Product.all()
-  binding.pry
   erb(:purchases)
 end

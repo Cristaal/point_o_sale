@@ -10,7 +10,7 @@
     <% @products.each() do |product| %>
     <div class="checkbox">
       <label>
-        <input type="checkbox" name="product_ids[]" value="<%= product.id() %>"><%= product.name() %>
+        <input type="checkbox" name="product_ids[]" value="<%= product.id() %>"><%= product.name() %> $<%= product.price() %>
       </label>
     </div>
   <% end %>
@@ -26,6 +26,7 @@
     <% @purchase.products().each() do |product| %>
     <li><%= product.name() %> <%= product.price() %></li>
     <% end %>
+    <p>Your Total is: $<%= @purchase.products().sum(:price) %> </p>
   </ul>
   <% else %>
     <p>There are no products yet!</p>
